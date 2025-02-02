@@ -8,6 +8,14 @@ import static io.restassured.RestAssured.given;
 
 @QuarkusTest
 class GreetingResourceTest {
+     @Test
+    void livenessShouldReturn200() {
+        given()
+          .when().get("/usuarios/liveness")
+          .then()
+             .statusCode(200);
+    }
+    
     @Test
     void findAllUsersShouldReturn200() {
         given()
@@ -16,5 +24,4 @@ class GreetingResourceTest {
              .statusCode(200);
              //.body(is("Hello from Quarkus REST"));
     }
-
 }
