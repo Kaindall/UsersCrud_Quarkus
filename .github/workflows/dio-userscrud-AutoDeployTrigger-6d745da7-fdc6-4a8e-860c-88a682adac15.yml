@@ -35,7 +35,7 @@ jobs:
         uses: azure/container-apps-deploy-action@v2
         with:
           appSourcePath: ${{ github.workspace }}
-          _dockerfilePathKey_: src/main/docker/**
+          _dockerfilePathKey_: /src/main/docker/Dockerfile.native-micro
           registryUsername: ${{ secrets.DIOUSERSCRUD_REGISTRY_USERNAME }}
           registryPassword: ${{ secrets.DIOUSERSCRUD_REGISTRY_PASSWORD }}
           containerAppName: dio-userscrud
