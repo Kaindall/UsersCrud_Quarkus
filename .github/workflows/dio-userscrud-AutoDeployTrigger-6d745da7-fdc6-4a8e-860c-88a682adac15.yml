@@ -36,7 +36,6 @@ jobs:
         with:
           appSourcePath: ${{ github.workspace }}
           _dockerfilePathKey_: _dockerfilePath_
-          registryUrl: diouserscrud.azurecr.io
           registryUsername: ${{ secrets.DIOUSERSCRUD_REGISTRY_USERNAME }}
           registryPassword: ${{ secrets.DIOUSERSCRUD_REGISTRY_PASSWORD }}
           containerAppName: dio-userscrud
