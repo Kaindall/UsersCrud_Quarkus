@@ -19,6 +19,13 @@ public class UserController {
     UserController(UserService userService) {this.userService = userService;}
 
     @GET
+    @Path("/liveness")
+    public Response healthCheck() {
+        String response = "Alive!";
+        return Response.ok(response).build();
+    }
+
+    @GET
     public Response findAll(@QueryParam("page") @DefaultValue("0") Integer currentPage,
                             @QueryParam("page-size") @DefaultValue("10") Integer pageSize) {
         List<UserEntity> users = userService.findAll(currentPage, pageSize);
