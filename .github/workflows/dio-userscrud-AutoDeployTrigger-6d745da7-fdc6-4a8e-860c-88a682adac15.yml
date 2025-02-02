@@ -1,4 +1,4 @@
-name: Trigger auto deployment for dio-userscrud
+name: Azure Deploy
 
 # When this action will be executed
 on:
@@ -36,7 +36,7 @@ jobs:
         with:
           appSourcePath: ${{ github.workspace }}
           _dockerfilePathKey_: _dockerfilePath_
-          registryUrl: 
+          registryUrl: diouserscrud.azurecr.io
           registryUsername: ${{ secrets.DIOUSERSCRUD_REGISTRY_USERNAME }}
           registryPassword: ${{ secrets.DIOUSERSCRUD_REGISTRY_PASSWORD }}
           containerAppName: dio-userscrud
