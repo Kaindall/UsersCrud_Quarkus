@@ -12,11 +12,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Setup JDK 17
-      uses: actions/setup-java@v4
+    
+    - name: Log in to Azure
+      uses: azure/login@v1
       with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: maven
-    - name: Build w/ Maven
-      run: mvn -B package --file pom.xml
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Build and deploy Container App
+      uses: azure/container-apps-deploy-action@v1
+      with:
+        appSourcePath: ${{ github.workspace }}/src
+        acrName: diouserscrud
+        containerAppName: dio-userscrud
+        resourceGroup: DIO-PublishAPI
+
+    # - name: Setup JDK 17
+    #   uses: actions/setup-java@v4
+    #   with:
+    #     java-version: '17's
+    #     distribution: 'temurin'
+    #     cache: maven
+    # - name: Build w/ Maven
+    #   run: mvn -B package --file pom.xml
